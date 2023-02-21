@@ -1,12 +1,15 @@
+// This component handles the form logic for the GroupByForm component, which is a child of this component.
+
 import { useState } from 'react';
 import GroupByForm from './GroupByForm';
-// import { validateGroupBy, splitArr } from './utils';
+import { splitArr } from './utils';
 
 function GroupByFormPage() {
   const initialState = {
     groupBy: '', 
     message: '',
     success: false,
+    splitArray: '',
   };
   const [form, setForm] = useState(initialState);
   const regex = /^\d*$/;
@@ -28,7 +31,6 @@ function GroupByFormPage() {
         message: '',
       });
     }
-    console.log("FORM: ", form);
   }
 
   const handleFormSubmit = async (evt) => {
@@ -50,26 +52,26 @@ function GroupByFormPage() {
         message: "Please enter a positive whole number.",
       });
     }
-    if (parseInt(groupBy) > 0){
+    if (parseInt(groupBy) >= 1) {
+      const splitArray = splitArr(groupBy);
       setForm({...form,
         groupBy,
         success: true,
-        message: "Success",
+        message: `The array will be divided into subarrays of length ${groupBy}.`,
+        splitArray,
       });
     }
-
-    console.log(form.groupBy, form.message);
   }
 
   return (
     <GroupByForm form={form} 
-      setForm={setForm} 
       handleFormChange={handleFormChange} 
       handleFormSubmit={handleFormSubmit}
       message={form.message}
       success={form.success}
+      splitArray={form.splitArray}
     />
-  )
+  );
 }
 
 export default GroupByFormPage;

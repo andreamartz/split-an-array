@@ -1,5 +1,4 @@
-function GroupByForm({ form, setForm, handleFormChange, handleFormSubmit, message, success, groupBy }) {
-    console.log("FORM: ", form);
+function GroupByForm({ form, handleFormChange, handleFormSubmit, message, success, splitArray }) {
     return (
       <>
         <div className="form-container mx-auto mt-5 border px-3 pb-3">
@@ -40,6 +39,10 @@ function GroupByForm({ form, setForm, handleFormChange, handleFormSubmit, messag
               </div>
             </div>
           </form>
+          {success && splitArray &&
+          <p className="show-result">
+            {`Your split array: ${splitArray}`}
+          </p>}
         </div>
       </>
     );
