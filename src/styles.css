@@ -1,0 +1,28 @@
+.message-success {
+  color: green;
+}
+
+.message-failure {
+  color: red;
+}
+
+/* xs screen width */
+@media (min-width: 376px) and (max-width: 576px) {
+  .container {
+      max-width: 90%;
+  }
+}
+
+/* sm through md screen widths */
+@media (min-width: 576px) and (max-width: 991px) {
+  .form-container {
+      max-width: 80%;
+  }
+}
+
+/* lg screen width and bigger */
+@media (min-width: 992px) {
+  .form-container {
+      max-width: 50%;
+  }
+}
