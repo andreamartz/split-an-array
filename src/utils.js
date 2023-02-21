@@ -10,12 +10,12 @@ function splitArr(groupBy, nums=[1,2,3,4,5,6,7,8]) {
     // We did not talk about what to return in this case, but I thought nums made the most sense.
   if (groupBy === null) {
     result.push(nums);
-    return result;
+    return JSON.stringify(result);
   }
 
   if (nums.length <= groupBy) {
     result.push(nums);
-    return result;
+    return JSON.stringify(result);
   }
 
   // Find the multiples of groupBy from 0 to nums.length - 1; 
@@ -43,9 +43,13 @@ function splitArr(groupBy, nums=[1,2,3,4,5,6,7,8]) {
 
 // Some tests:
   // In a real-project I would write these with a testing framework in a separate file, but I am running out of time.
-// console.log(splitArr([]));  // [[]]
-// console.log(splitArr([1, 2])); // [[1, 2]]
-// console.log(splitArr([2, 7, -1, 18, -7])); // [[2, 7], [-1, 18], [-7]]
-// console.log(splitArr([1, 2, 3, 4, 5, 6, 7, 8])); // [[1, 2, 3], [4, 5, 6], [7, 8]]
+
+// Assume groupBy is 2:
+  // console.log(splitArr([]));  // [[]]
+  // console.log(splitArr([2, 7, -1, 18, -7])); // [[2, 7], [-1, 18], [-7]]
+
+// Assume groupBy is 3:
+  // console.log(splitArr([1, 2])); // [[1, 2]]
+  // console.log(splitArr([1, 2, 3, 4, 5, 6, 7, 8])); // [[1, 2, 3], [4, 5, 6], [7, 8]]
 
 export { splitArr };

@@ -14,14 +14,23 @@ function GroupByFormPage() {
   const [form, setForm] = useState(initialState);
   const regex = /^\d*$/;
 
+  // validate user input and update state
   const handleFormChange = async (evt) => {
     const { name, value } = evt.target;
 
     if (!regex.test(value)) {
       setForm({
         ...form,
+        [name]: value,
         success: false,
         message: "Only digits are allowed. Please try again.",
+      });
+    } else if (parseInt(value) < 1) {
+      setForm({
+        ...form, 
+        [name]: value,
+        success: false, 
+        message: "Please enter a positive whole number.",
       });
     } else {
       setForm({
@@ -35,27 +44,12 @@ function GroupByFormPage() {
 
   const handleFormSubmit = async (evt) => {
     evt.preventDefault();
-    const {value} = evt.target;
-
-    if (!regex.test(value)) {
-      setForm({
-        ...form,
-        success: false,
-        message: "Only digits are allowed. Please try again."
-      })
-    }
     const { groupBy } = form;
-    if (groupBy < 1) {
-      setForm({...form, 
-        groupBy: '',
-        success: false, 
-        message: "Please enter a positive whole number.",
-      });
-    }
+
     if (parseInt(groupBy) >= 1) {
       const splitArray = splitArr(groupBy);
       setForm({...form,
-        groupBy,
+        groupBy: '',
         success: true,
         message: `The array will be divided into subarrays of length ${groupBy}.`,
         splitArray,
