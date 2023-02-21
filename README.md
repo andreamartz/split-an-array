@@ -2,7 +2,7 @@
 
 Given an array of numbers (nums) and a user input of some integer (groupBy), split the array into multiple subarrays, each with a length of groupBy.
 
-Exceptions: 
+## Exceptions: 
  1. If the length of nums is less than or equal to groupBy, then return nums.
  2. If the length of nums is not evenly divisible by groupBy, then the last subarray returned will have a length of less than groupBy.
 
