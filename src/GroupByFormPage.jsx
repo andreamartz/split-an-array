@@ -64,9 +64,10 @@ function GroupByFormPage() {
   }
 
   return (
-    <GroupByForm form={form} 
+    <GroupByForm 
       handleFormChange={handleFormChange} 
       handleFormSubmit={handleFormSubmit}
+      groupBy={form.groupBy}
       message={form.message}
       success={form.success}
       splitArray={form.splitArray}
